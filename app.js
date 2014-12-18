@@ -26,47 +26,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 
-var tmpdata = {};
-app.post("/uploadChunk",function(req, res) {
-    req.on('data', function(chunk) {
-        if(chunk.toString()==="start"){
-            tmpdata.testid = [];
-            console.log(tmpdata);
-        }else if(chunk.toString()==="end"){
-            console.log("end");
-            console.log(Buffer.concat(tmpdata.testid));
-            console.log(Buffer.concat(tmpdata.testid).toString());
-        }else{
-            tmpdata.testid.push(chunk);
-            console.log(chunk);
-        }
-    });
-    req.on('end', function() {
-        res.send("success");
-    });
-});
-
 app.post("/uploadMultipart",function(req, res) {
-    req.on('data', function(chunk) {
-        console.log(chunk.toString());
+    req.on('data', function(data) {
+        console.log(data.toString());
     });
     req.on('end', function() {
         res.send("success");
     });
 });
 
-/*
-app.post("/uploadChunk",function(req,res){
-    //リクエストが来たら、sessionのidを見て、streamをつくる
-    req.on("data",function(chunk){
-        console.log(chunk);
-    });
-    req.on("end",function(){
-        res.send("finish");    
-    });
-
-});
-*/
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
