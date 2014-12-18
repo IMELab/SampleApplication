@@ -18,6 +18,7 @@ $ npm start
 
 #Structure
 
+```
 .  
 ├── README.md  
 ├── app.js（Webサーバーのメインファイル）  
@@ -38,3 +39,4 @@ $ npm start
     ├── error.jade（エラーページテンプレート）  
     ├── index.jade（メインページテンプレート）  
     └── layout.jade（レイアウトテンプレート）  
+```
