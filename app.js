@@ -26,14 +26,20 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 
+
+//==========MULTIPART UPLOADER============
+
 app.post("/uploadMultipart",function(req, res) {
     req.on('data', function(data) {
-        console.log(data.toString());
+        console.log(data);//recieved data is originaly Buffer
+        console.log(data.toString());//convert the data into String
     });
     req.on('end', function() {
         res.send("success");
     });
 });
+
+//========================================
 
 
 // catch 404 and forward to error handler
