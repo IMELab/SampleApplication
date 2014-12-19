@@ -2,5 +2,7 @@ extends layout
 
 block content
   h1= title
+  p Set size of JSON for upload as the number of properties:
+  input#uploadSize(value=1000)
   button#upload UPLOAD
   script(src="/javascripts/upload.js")

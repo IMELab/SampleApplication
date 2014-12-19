@@ -5,9 +5,9 @@ document.querySelector('#upload').addEventListener('click', upload, false);
 function upload(event) {
     var fd = new FormData();
     var data = {};
-    
+    var size = Number(document.querySelector("#uploadSize").value);
     //sample json string having 100 properties.
-    for(var i=0; i < 100; i++){
+    for(var i=0; i < size; i++){
         data["key"+i] = "value" + i;
     }
     
