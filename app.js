@@ -37,15 +37,18 @@ app.use('/users', users);
 app.post("/uploadMultipart",function(req, res) {
     
     var form = new multiparty.Form();
-    
     form.parse(req, function(err, fields, files) {
         if(err) throw err;
-        var data = fs.readFileSync(files.uploaded[0].path);
-        console.log(data.toString());
+        Object.keys(files).forEach(function(file){
+            Object.keys(files[file]).forEach(function(key){
+                var data = fs.readFileSync(files[file][key].path);    
+                console.log(data.toString());
+            });
+        });
     });
     
     req.on('end', function() {
-        res.send("success");
+        res.send("finish");
     });
     
 });
