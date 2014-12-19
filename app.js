@@ -35,7 +35,6 @@ app.use('/users', users);
 //==========MULTIPART UPLOADER============
 
 app.post("/uploadMultipart",function(req, res) {
-    
     var form = new multiparty.Form();
     form.parse(req, function(err, fields, files) {
         if(err) throw err;
@@ -46,11 +45,9 @@ app.post("/uploadMultipart",function(req, res) {
             });
         });
     });
-    
     req.on('end', function() {
         res.send("finish");
     });
-    
 });
 
 //========================================
