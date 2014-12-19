@@ -1,9 +1,14 @@
+var util = require("util");
+var fs = require("fs");
+
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+
+var multiparty = require("multiparty");
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -30,13 +35,19 @@ app.use('/users', users);
 //==========MULTIPART UPLOADER============
 
 app.post("/uploadMultipart",function(req, res) {
-    req.on('data', function(data) {
-        console.log(data);//recieved data is originaly Buffer
-        console.log(data.toString());//convert the data into String
+    
+    var form = new multiparty.Form();
+    
+    form.parse(req, function(err, fields, files) {
+        if(err) throw err;
+        var data = fs.readFileSync(files.uploaded[0].path);
+        console.log(data.toString());
     });
+    
     req.on('end', function() {
         res.send("success");
     });
+    
 });
 
 //========================================

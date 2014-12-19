@@ -1,5 +1,5 @@
 #About
-This is a sample application running on Node.js via Express.
+This is a sample application running on Node.js via Express.  
 Node.js、Expressを用いたサンプルアプリケーションです。
 
 #Usage

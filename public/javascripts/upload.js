@@ -7,10 +7,16 @@ function upload(event) {
     var data = {};
     
     //sample json string having 100 properties.
-    for(var i=0; i < 100; i++){
+    for(var i=0; i < 10000; i++){
         data["key"+i] = "value" + i;
     }
-    fd.append("file", JSON.stringify(data));
+    
+    var contents = new Blob([JSON.stringify(data)], { type: "text/json"});
+    
+    //old version
+    //var contents = JSON.stringify(data);
+    
+    fd.append("uploaded", contents);
     
     var xhr = new XMLHttpRequest();
     xhr.onload = function(e){
