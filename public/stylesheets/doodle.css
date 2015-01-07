@@ -1,0 +1,11 @@
+#mycanvas{
+    border:solid black 1px;
+}
+.doodle{
+    padding:2px;
+}
+.doodle:hover{
+    cursor: pointer;
+    border:solid lightgray 2px;
+    margin: -2px;
+}

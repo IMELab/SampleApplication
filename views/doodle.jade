@@ -1,0 +1,12 @@
+extends layout
+block extraHeader
+  link(rel="stylesheet", href="/stylesheets/doodle.css")
+
+block content
+  h1= title
+  p Welcome to #{title}
+  canvas#mycanvas(width=500 height=500)
+  button#save Save
+  button#init Initialize
+  div#doodles
+  script(src="/javascripts/doodle.js")
