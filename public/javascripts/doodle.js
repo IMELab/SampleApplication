@@ -23,24 +23,80 @@ mycanvas.addEventListener("mousemove",function(e){
     }
 });
 
-//===============保存機能=================
-document.getElementById("save").addEventListener("click",saveCanvas);
-function saveCanvas(e){
+//===============スナップ機能=================
+document.getElementById("snap").addEventListener("click",snapCanvas);
+function snapCanvas(e){
+    var doodle = document.createElement("div");
+    doodle.className = "doodle";
+    
     var canvasData = mycanvas.toDataURL('image/png');
-    var myimg = document.createElement("img");
-    myimg.src = canvasData;
-    myimg.className = "doodle";
-    myimg.width = 100;
-    myimg.height = 100;                
-    myimg.addEventListener("click",function(e){
+    var snap = document.createElement("img");
+    snap.src = canvasData;
+    snap.className = "snap";
+    snap.width = 125;
+    snap.height = 125;         
+    snap.addEventListener("click",function(e){
         initCanvas();
         ctx.drawImage(e.target, 0,0,500,500);
     });
-    document.getElementById("doodles").appendChild(myimg);
+    
+    
+    doodle.appendChild(snap);
+    doodle = attachMenu(doodle);
+    
+    document.getElementById("doodles").appendChild(doodle);
 }
 
-//==============初期化機能================
-document.getElementById("init").addEventListener("click",initCanvas);
-function initCanvas(e){
+function attachMenu(doodle){
+    var snapMenu = document.createElement("div");
+    snapMenu.className = "snapMenu";
+    
+    var saveSnap = document.createElement("img");
+    saveSnap.src = "/images/save_icon.png";
+    saveSnap.className = "menuIcon";
+    saveSnap.addEventListener("click",function(e){
+        var dllink = document.createElement("a");
+        dllink.href = doodle.children[0].src;
+        dllink.download = "mysnap.png";
+        dllink.click();
+    });
+
+    var chooseSnap = document.createElement("img");
+    chooseSnap.src = "/images/choose_icon.png";
+    chooseSnap.className = "menuIcon";
+    chooseSnap.addEventListener("click", function(e){
+        ctx.drawImage(doodle.children[0],0,0,mycanvas.width,mycanvas.height);
+    });
+    
+    var removeSnap = document.createElement("img");
+    removeSnap.src = "/images/remove_icon.png";
+    removeSnap.className = "menuIcon";
+    removeSnap.addEventListener("click",function(e){
+        if(window.confirm("CONFIRMATION:: Do you realy want to remove this snap?")){
+            document.getElementById("doodles").removeChild(doodle);
+        }
+    });
+    
+    snapMenu.appendChild(saveSnap);
+    snapMenu.appendChild(chooseSnap);
+    snapMenu.appendChild(removeSnap);
+    
+    doodle.appendChild(snapMenu);
+    
+    return doodle;
+}
+
+function saveSnap(e){
+    
+}
+
+function removeSnap(e){
+    
+}
+
+
+//==============クリア機能================
+document.getElementById("clear").addEventListener("click",clearCanvas);
+function clearCanvas(e){
     ctx.clearRect(0,0,mycanvas.width,mycanvas.height);
 }
