@@ -2,8 +2,8 @@
 This is a sample application running on Node.js via Express.  
 Node.js、Expressを用いたサンプルアプリケーションです。
 
-[Try it on Heroku](https://imelab-sampleapp.herokuapp.com/)
-[サンプルを試す](https://imelab-sampleapp.herokuapp.com/)
+[Try it on Heroku](https://imelab-sampleapp.herokuapp.com/)  
+[Herokuでサンプルを試す](https://imelab-sampleapp.herokuapp.com/)
 
 #Usage
 

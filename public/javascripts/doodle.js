@@ -34,12 +34,7 @@ function snapCanvas(e){
     snap.src = canvasData;
     snap.className = "snap";
     snap.width = 125;
-    snap.height = 125;         
-    snap.addEventListener("click",function(e){
-        initCanvas();
-        ctx.drawImage(e.target, 0,0,500,500);
-    });
-    
+    snap.height = 125;
     
     doodle.appendChild(snap);
     doodle = attachMenu(doodle);
@@ -59,7 +54,7 @@ function attachMenu(doodle){
     saveSnap.addEventListener("click",function(e){
         var dllink = document.createElement("a");
         dllink.href = doodle.children[0].src;
-        dllink.download = "mysnap.png";
+        dllink.download = "mydoodle.png";
         dllink.click();
     });
 
@@ -67,6 +62,7 @@ function attachMenu(doodle){
     chooseSnap.src = "/images/choose_icon.png";
     chooseSnap.className = "menuIcon";
     chooseSnap.addEventListener("click", function(e){
+        clearCanvas();
         ctx.drawImage(doodle.children[0],0,0,mycanvas.width,mycanvas.height);
     });
     
