@@ -4,9 +4,10 @@ block extraHeader
 
 block content
   h1= title
-  p Welcome to #{title}
+  p Let's doodle on canvas! You can draw something on canvas, snap it temporaly, and download it as PNG files.
   canvas#mycanvas(width=500 height=500)
   button#snap Snap
   button#clear Clear
+  h2 Doodle Snaps
   div#doodles
   script(src="/javascripts/doodle.js")

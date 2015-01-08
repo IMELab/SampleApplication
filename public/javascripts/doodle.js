@@ -48,6 +48,7 @@ function attachMenu(doodle){
     var snapMenu = document.createElement("div");
     snapMenu.className = "snapMenu";
     
+    //保存機能
     var saveSnap = document.createElement("img");
     saveSnap.src = "/images/save_icon.png";
     saveSnap.className = "menuIcon";
@@ -57,7 +58,8 @@ function attachMenu(doodle){
         dllink.download = "mydoodle.png";
         dllink.click();
     });
-
+    
+    //選択機能
     var chooseSnap = document.createElement("img");
     chooseSnap.src = "/images/choose_icon.png";
     chooseSnap.className = "menuIcon";
@@ -66,6 +68,7 @@ function attachMenu(doodle){
         ctx.drawImage(doodle.children[0],0,0,mycanvas.width,mycanvas.height);
     });
     
+    //削除機能
     var removeSnap = document.createElement("img");
     removeSnap.src = "/images/remove_icon.png";
     removeSnap.className = "menuIcon";

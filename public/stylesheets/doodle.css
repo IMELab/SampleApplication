@@ -17,30 +17,30 @@
 .doodle .snap,.snapMenu{
     position: absolute;
     left:0;
+    width:125px;
     margin:0;
     padding:0;
 }
 
 .doodle .snap{
     top:0;
-    width:125px;
     height:125px;
 }
 
 .doodle .snapMenu{
     bottom:0;
+    opacity: 0;
     background: rgba(220,220,220,0.9);
-    width:125px;
     height:50px;
     line-height: 60px;
-    transform: translateY(100%);
-    transition: opacity 0.6s, transform 0.6s;
     vertical-align: middle;
+    transform: translateY(100%);
+    transition: opacity 0.3s, transform 0.4s;
 }
 
 .doodle:hover .snapMenu{
-  opacity: 1;
-  transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .menuIcon{
