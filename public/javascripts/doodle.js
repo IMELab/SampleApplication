@@ -47,6 +47,8 @@ function snapCanvas(e){
     document.getElementById("doodles").appendChild(doodle);
 }
 
+//===============スナップメニュー=================
+
 function attachMenu(doodle){
     var snapMenu = document.createElement("div");
     snapMenu.className = "snapMenu";
@@ -85,15 +87,6 @@ function attachMenu(doodle){
     
     return doodle;
 }
-
-function saveSnap(e){
-    
-}
-
-function removeSnap(e){
-    
-}
-
 
 //==============クリア機能================
 document.getElementById("clear").addEventListener("click",clearCanvas);
